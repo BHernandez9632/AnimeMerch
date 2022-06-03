@@ -1,6 +1,7 @@
 const data = {
   merchs: [
     {
+      _id: '1',
       name: 'OnePiece Hoodie',
       slug: 'onepiece-hoodie',
       category: 'Hoodie',
@@ -14,6 +15,7 @@ const data = {
     },
 
     {
+      _id: '2',
       name: 'OnePiece Sweatpants',
       slug: 'onepiece-sweatpants',
       category: 'Sweatpants',
@@ -27,6 +29,7 @@ const data = {
     },
 
     {
+      _id: '3',
       name: 'DragonBall Hoodie',
       slug: 'dragonball-hoodie',
       category: 'Hoodie',
@@ -40,6 +43,7 @@ const data = {
     },
 
     {
+      _id: '4',
       name: 'DragonBall Sweatpants',
       slug: 'dragonball-sweatpants',
       category: 'Sweatpants',
@@ -53,6 +57,7 @@ const data = {
     },
 
     {
+      _id: '5',
       name: 'DemonSlayer Hoodie',
       slug: 'demonslayer-hoodie',
       category: 'Hoodie',
@@ -66,6 +71,7 @@ const data = {
     },
 
     {
+      _id: '6',
       name: 'DemonSlayer Sweatpants',
       slug: 'demonslayer-sweatpants',
       category: 'Sweatpants',
