@@ -7,19 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  grid-area: header;
-  background-color: #0c949e;
-  padding: 1rem;
-}
-
-header a {
-  color: #ffffff;
-  padding: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 main {
+  flex: 1;
+}
+
+.merchs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.merch {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.merch img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.merch-info {
   padding: 1rem;
+}
+
+.site-container {
+  min-height: 100vh;
 }
