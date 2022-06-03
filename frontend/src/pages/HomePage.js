@@ -1,7 +1,10 @@
 import { useEffect, useReducer, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Merch from '../sections/Products';
+import { Helmet } from 'react-helmet-async';
 // import data from '../data';
 
 const reducer = (state, action) => {
@@ -40,6 +43,9 @@ function HomePage() {
   }, []);
   return (
     <div>
+      <Helmet>
+        <title>AnimeMerch</title>
+      </Helmet>
       <h1>Featured Anime Merch</h1>
       <div className="merchs">
         {loading ? (
@@ -47,20 +53,13 @@ function HomePage() {
         ) : error ? (
           <div>{error}</div>
         ) : (
-          merchs.map((merch) => (
-            <div className="merch" key={merch.slug}>
-              <Link to={`/merch/${merch.slug}`}>
-                <img src={merch.image} alt={merch.name} />
-              </Link>
-              <div className="merch-info">
-                <Link to={`/merch/${merch.slug}`}>
-                  <p>{merch.name}</p>
-                </Link>
-                <p>${merch.price}</p>
-                <button> Add to cart </button>
-              </div>
-            </div>
-          ))
+          <Row>
+            {merchs.map((merch) => (
+              <Col key={merch.slug} sm={6} md={5} lg={4} className="mb-2">
+                <Merch merch={merch}></Merch>
+              </Col>
+            ))}
+          </Row>
         )}
       </div>
     </div>

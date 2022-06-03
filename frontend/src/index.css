@@ -11,6 +11,10 @@ main {
   flex: 1;
 }
 
+.btn-primary {
+  background-color: black;
+}
+
 .merchs {
   display: flex;
   flex-wrap: wrap;
@@ -33,4 +37,12 @@ main {
 
 .site-container {
   min-height: 100vh;
+}
+
+.srating span {
+  color: #ffc000;
+}
+
+.img-large {
+  max-width: 100%;
 }
