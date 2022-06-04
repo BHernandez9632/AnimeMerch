@@ -31,6 +31,10 @@ main {
   max-width: 400px;
 }
 
+.small-container {
+  max-width: 600px;
+}
+
 .merch-info {
   padding: 1rem;
 }
