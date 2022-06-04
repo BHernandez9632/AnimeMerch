@@ -8,6 +8,10 @@ const initialState = {
     : null,
 
   cart: {
+    customerInformation: localStorage.getItem('customerInformation')
+      ? JSON.parse(localStorage.getItem('customerInformation'))
+      : {},
+
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
@@ -40,6 +44,16 @@ function reducer(state, interact) {
       return {
         ...state,
         userInfo: null,
+        cartItems: [],
+        customerInformation: {},
+      };
+    case 'SAVE_CUSTOMER_INFORMATION':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          customerInformation: interact.payload,
+        },
       };
     default:
       return state;

@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { Storage } from './Storage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
+import CustomerInfoPage from './pages/CustomerInfoPage';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Storage);
@@ -19,6 +20,7 @@ function App() {
   const logoutHandler = () => {
     ctxDispatch({ type: 'USER_LOGOUT' });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('customerInformation');
   };
   return (
     <BrowserRouter>
@@ -70,6 +72,7 @@ function App() {
               <Route path="/merch/:slug" element={<MerchPage />} />
               <Route path="/signin" element={<LoginPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/shipping" element={<CustomerInfoPage />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </Container>
