@@ -4,8 +4,8 @@ import Merch from '../models/merchModel.js';
 const merchRouter = express.Router();
 
 merchRouter.get('/', async (req, res) => {
-  const merchs = await Merch.find();
-  res.send(merchs);
+  const merch = await Merch.find();
+  res.send(merch);
 });
 
 merchRouter.get('/slug/:slug', async (req, res) => {
@@ -13,7 +13,7 @@ merchRouter.get('/slug/:slug', async (req, res) => {
   if (merch) {
     res.send(merch);
   } else {
-    res.status(404).send({ message: 'Not Available' });
+    res.status(404).send({ message: 'Merch Not Found' });
   }
 });
 
@@ -22,7 +22,7 @@ merchRouter.get('/:id', async (req, res) => {
   if (merch) {
     res.send(merch);
   } else {
-    res.status(404).send({ message: 'Not Available' });
+    res.status(404).send({ message: 'Merch Not Found' });
   }
 });
 
