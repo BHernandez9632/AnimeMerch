@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -28,6 +28,7 @@ const reducer = (state, action) => {
 };
 
 function MerchPage() {
+  const navigate = useNavigate();
   const area = useParams();
   const { slug } = area;
   const [{ loading, error, merch }, dispatch] = useReducer(reducer, {
@@ -63,6 +64,7 @@ function MerchPage() {
       type: 'CART_ADD_ITEM',
       payload: { ...merch, total },
     });
+    navigate('/cart');
   };
 
   return loading ? (
