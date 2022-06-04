@@ -2,6 +2,8 @@ import express from 'express';
 import data from './data.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import seedRouter from './routes/seedRoutes.js';
+import merchRouter from './routes/merchRoutes.js';
 
 dotenv.config();
 
@@ -15,28 +17,8 @@ mongoose
   });
 
 const app = express();
-
-app.get('/api/merchs', (req, res) => {
-  res.send(data.merchs);
-});
-
-app.get('/api/merchs/slug/:slug', (req, res) => {
-  const merch = data.merchs.find((x) => x.slug === req.params.slug);
-  if (merch) {
-    res.send(merch);
-  } else {
-    res.status(404).send({ message: 'Not Available' });
-  }
-});
-
-app.get('/api/merchs/:id', (req, res) => {
-  const merch = data.merchs.find((x) => x._id === req.params.id);
-  if (merch) {
-    res.send(merch);
-  } else {
-    res.status(404).send({ message: 'Not Available' });
-  }
-});
+app.use('/api/seed', seedRouter);
+app.use('/api/merchs', merchRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
