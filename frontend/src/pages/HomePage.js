@@ -48,7 +48,7 @@ function HomePage() {
       <Helmet>
         <title>AnimeMerch</title>
       </Helmet>
-      <h1>Featured Anime Merch</h1>
+      <h1>Anime Merch</h1>
       <div className="merchs">
         {loading ? (
           <LoadingBox />

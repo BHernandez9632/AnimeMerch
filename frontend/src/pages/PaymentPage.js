@@ -15,6 +15,7 @@ export default function PaymentPage() {
   const [paymentMethodName, setPaymentMethod] = useState(
     paymentMethod || 'PayPal'
   );
+
   useEffect(() => {
     if (!customerInformation.address) {
       navigate('/shipping');
