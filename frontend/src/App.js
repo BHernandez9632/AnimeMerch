@@ -1,4 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/HomePage';
 import MerchPage from './pages/MerchPage';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,6 +14,7 @@ import { Storage } from './Storage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import CustomerInfoPage from './pages/CustomerInfoPage';
+import SignUpPage from './pages/SignUpPage';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Storage);
@@ -25,6 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
+        <ToastContainer position="top-center" limit={1} />
         <header>
           <Navbar bg="primary" varian="primary">
             <Container>
@@ -71,6 +75,7 @@ function App() {
             <Routes>
               <Route path="/merch/:slug" element={<MerchPage />} />
               <Route path="/signin" element={<LoginPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/shipping" element={<CustomerInfoPage />} />
               <Route path="/" element={<HomePage />} />
