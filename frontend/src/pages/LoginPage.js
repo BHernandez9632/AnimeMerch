@@ -43,7 +43,7 @@ export default function LoginPage() {
     }
   }, [navigate, redirect, userInfo]);
   return (
-    <Container className="s-container">
+    <Container className="small-container">
       <Helmet>
         <title>Log In</title>
       </Helmet>
@@ -71,7 +71,7 @@ export default function LoginPage() {
         </div>
         <div className="mb-3">
           First time?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Create Account</Link>
+          <Link to={`/signin?redirect=${redirect}`}>Create Account</Link>
         </div>
       </Form>
     </Container>

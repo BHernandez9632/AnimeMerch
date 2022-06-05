@@ -39,6 +39,14 @@ main {
   padding: 1rem;
 }
 
+.checkout-steps > div {
+  border-bottom: 0.2 solid #a0a0aa;
+  color: #a0a0aa;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2 solid #404040;
+  color: #404040;
+}
 .site-container {
   min-height: 100vh;
 }

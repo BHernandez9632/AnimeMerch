@@ -14,6 +14,7 @@ import { Storage } from './Storage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import CustomerInfoPage from './pages/CustomerInfoPage';
+import PaymentPage from './pages/PaymentPage';
 import SignUpPage from './pages/SignUpPage';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     ctxDispatch({ type: 'USER_LOGOUT' });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('customerInformation');
+    localStorage.removeItem('paymentMethod');
   };
   return (
     <BrowserRouter>
@@ -74,9 +76,10 @@ function App() {
           <Container className="mt-1">
             <Routes>
               <Route path="/merch/:slug" element={<MerchPage />} />
+              <Route path="/cart" element={<CartPage />} />
               <Route path="/signin" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/cart" element={<CartPage />} />
+              <Route path="/payment" element={<PaymentPage />} />
               <Route path="/shipping" element={<CustomerInfoPage />} />
               <Route path="/" element={<HomePage />} />
             </Routes>

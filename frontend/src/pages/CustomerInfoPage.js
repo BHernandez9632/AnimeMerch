@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { Storage } from '../Storage';
+import CheckOutBar from '../sections/CheckOutBar';
 
 export default function CustomerInfoPage() {
   const navigate = useNavigate();
@@ -56,7 +57,8 @@ export default function CustomerInfoPage() {
       <Helmet>
         <title>Shipping Info</title>
       </Helmet>
-      <div className="contaienr s-container">
+      <CheckOutBar step1 step2></CheckOutBar>
+      <div className="container small-container">
         <h1 className="my-3"> Customer Info </h1>
 
         <Form onSubmit={submitHandler}>

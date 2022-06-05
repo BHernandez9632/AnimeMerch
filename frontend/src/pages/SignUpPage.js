@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import { Storage } from '../Storage';
+import { toast } from 'react-toastify';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -20,11 +21,11 @@ export default function SignUpPage() {
 
   const { state, dispatch: ctxDispatch } = useContext(Storage);
   const { userInfo } = state;
-
   const submitHandler = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
-      console.log('Invalid Entry');
+      toast.error('Invalid Entry');
       return;
     }
 
@@ -48,18 +49,18 @@ export default function SignUpPage() {
     }
   }, [navigate, redirect, userInfo]);
   return (
-    <Container className="s-container">
+    <Container className="small-container">
       <Helmet>
         <title>Make New Account</title>
       </Helmet>
       <h1 className="my-3">Make New Account</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" logid="name">
+        <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control onChange={(e) => setName(e.target.value)} required />
         </Form.Group>
 
-        <Form.Group className="mb-3" logid="email">
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -68,7 +69,7 @@ export default function SignUpPage() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" logid="password">
+        <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -76,7 +77,7 @@ export default function SignUpPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Form.Group className="mb-3" logid="confrimPassword">
+        <Form.Group className="mb-3" controlId="confrimPassword">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
@@ -90,7 +91,7 @@ export default function SignUpPage() {
         </div>
         <div className="mb-3">
           Returning User?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Log In</Link>
+          <Link to={`/signin?redirect=${redirect}`}>Log In</Link>
         </div>
       </Form>
     </Container>
