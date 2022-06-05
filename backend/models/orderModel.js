@@ -6,9 +6,9 @@ const orderModelSchema = new mongoose.Schema(
       {
         slug: { type: String, required: true },
         name: { type: String, required: true },
-        quanitity: { type: Number, required: true },
+        total: { type: Number, required: true },
         image: { type: String, required: true },
-        Price: { type: Number, required: true },
+        price: { type: Number, required: true },
         merch: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Merch',
@@ -24,10 +24,10 @@ const orderModelSchema = new mongoose.Schema(
       country: { type: String, required: true },
     },
 
-    paymentMehod: { type: String, required: true },
+    paymentMethod: { type: String, required: true },
     paymentResult: {
       id: String,
-      statis: String,
+      status: String,
       update_time: String,
       email_address: String,
     },
@@ -36,7 +36,7 @@ const orderModelSchema = new mongoose.Schema(
     shippingPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', reqiored: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     isDelivered: { type: Boolean, default: false },
@@ -47,6 +47,6 @@ const orderModelSchema = new mongoose.Schema(
   }
 );
 
-const OrderModel = mongoose.model('OrderModel', orderModelSchema);
+const Order = mongoose.model('Order', orderModelSchema);
 
-export default OrderModel;
+export default Order;

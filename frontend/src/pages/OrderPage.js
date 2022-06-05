@@ -20,7 +20,7 @@ const reducer = (state, action) => {
     case 'CREATE_SUCCESS':
       return { ...state, loading: false };
     case 'CREATE_FAIL':
-      return { ...state, loading: true };
+      return { ...state, loading: false };
     default:
       return state;
   }
@@ -36,7 +36,7 @@ export default function OrderPage() {
 
   const round2decimal = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
   cart.itemsPrice = round2decimal(
-    cart.cartItems.reduce((a, b) => a + b.quanitiy * b.price, 0)
+    cart.cartItems.reduce((a, b) => a + b.total * b.price, 0)
   );
 
   cart.shippingPrice =
@@ -66,7 +66,7 @@ export default function OrderPage() {
       );
       ctxDispatch({ type: 'CART_CLEAR' });
       dispatch({ type: 'CREATE_SUCCESS' });
-      localStorage.removeItems('cartItems');
+      localStorage.removeItem('cartItems');
       navigate(`/order/${data.order._id}`);
     } catch (err) {
       dispatch({ type: 'CREATE_FAIL' });
