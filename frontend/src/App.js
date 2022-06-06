@@ -19,6 +19,7 @@ import SignUpPage from './pages/SignUpPage';
 import OrderPage from './pages/OrderPage';
 import OrderInfoPage from './pages/OrderInfoPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
+import UserAccountPage from './pages/UserAccountPage';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Storage);
@@ -29,6 +30,7 @@ function App() {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('customerInformation');
     localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
   };
   return (
     <BrowserRouter>
@@ -82,6 +84,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/signin" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/profile" element={<UserAccountPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/placeorder" element={<OrderPage />} />
               <Route path="/order/:id" element={<OrderInfoPage />} />
