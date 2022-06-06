@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/BHernandez9632/AnimeMerch/issues"
   },
+  "engines": {
+    "node": "v16.15.1"
+  },
   "homepage": "https://github.com/BHernandez9632/AnimeMerch#readme"
 }
