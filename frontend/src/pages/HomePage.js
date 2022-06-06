@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -28,7 +28,7 @@ function HomePage() {
     loading: true,
     error: '',
   });
-  // const [merchs, setMerchs] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -38,8 +38,6 @@ function HomePage() {
       } catch (err) {
         dispatch({ trype: 'FETCH_FAIL', payload: err.message });
       }
-
-      // setMerchs(result.data);
     };
     fetchData();
   }, []);
