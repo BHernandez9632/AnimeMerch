@@ -11,12 +11,12 @@ const data = {
 
     {
       name: 'Leroy',
-      email: 'test@tester.com',
+      email: 'test6@tester.com',
       password: bcrypt.hashSync('135246'),
       isAdmin: false,
     },
   ],
-
+  //product creation
   merchs: [
     {
       _id: '1',

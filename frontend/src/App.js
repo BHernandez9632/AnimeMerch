@@ -78,6 +78,7 @@ function App() {
         </header>
         <main>
           <Container className="mt-1">
+            {/*Routes is used to define the path between pages*/}
             <Routes>
               <Route path="/merch/:slug" element={<MerchPage />} />
               <Route path="/cart" element={<CartPage />} />

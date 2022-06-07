@@ -7,7 +7,6 @@ import Merch from '../sections/Products';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../sections/LoadingBox';
 import MessageBox from '../sections/MessageBox';
-// import data from '../data';
 
 const reducer = (state, action) => {
   switch (action.type) {

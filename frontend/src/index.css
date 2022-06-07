@@ -15,6 +15,7 @@ main {
   background-color: black;
 }
 
+/* Used to organize merchandise*/
 .merchs {
   display: flex;
   flex-wrap: wrap;
