@@ -1,10 +1,13 @@
+//Rating function accepts props
 function Rating(props) {
   const { rating, review } = props;
   return (
     <div className="srating">
+      {/*Span used for icon used to show star rating on product */}
       <span>
         <i
           className={
+            // rating used to check what the star value is implementing fontawesome to show stars.
             rating >= 1
               ? 'fas fa-star'
               : rating >= 0.5
@@ -57,6 +60,7 @@ function Rating(props) {
           }
         />
       </span>
+      {/*Used to show reviews next to the star rating */}
       <span> {review} Reviews</span>
     </div>
   );

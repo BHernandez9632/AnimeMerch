@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+//This schema is used to define the fields in user
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -8,10 +9,11 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, default: false, required: true },
   },
   {
-    timsestamps: true,
+    timestamps: true,
   }
 );
 
+//This builds a model based on the schema
 const User = mongoose.model('User', userSchema);
 
 export default User;

@@ -7,24 +7,35 @@ import CheckOutBar from '../sections/CheckOutBar';
 import { Storage } from '../Storage';
 
 export default function PaymentPage() {
+  //uses navigate hook to navigate data
   const navigate = useNavigate();
+
   const { state, dispatch: ctxDispatch } = useContext(Storage);
+  //uses state to get cart
   const {
+    //from the cart it gets customer information and payment method
     cart: { customerInformation, paymentMethod },
   } = state;
+  //defines state for payment method name
   const [paymentMethodName, setPaymentMethod] = useState(
     paymentMethod || 'PayPal'
   );
 
   useEffect(() => {
+    //Takes user back to previous state if address does not exist
     if (!customerInformation.address) {
       navigate('/shipping');
     }
   }, [customerInformation, navigate]);
+
+  //prevents refresh of page on submit
   const submitHandler = (e) => {
     e.preventDefault();
+    //dispatches save payment method
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
+    //Saves selected method in local storage
     localStorage.setItem('paymentMethod', paymentMethodName);
+    //redirects user to next state
     navigate('/placeorder');
   };
   return (
@@ -35,8 +46,10 @@ export default function PaymentPage() {
           <title>Payment Method</title>
         </Helmet>
         <h1 className="my-3"> Payment Method </h1>
+        {/*Sumbit handler for created form */}
         <Form onSubmit={submitHandler}>
           <div className="mb-3">
+            {/*Check boxed that is checked if payment method is PayPal */}
             <Form.Check
               type="radio"
               id="PayPal"
@@ -47,6 +60,7 @@ export default function PaymentPage() {
             />
           </div>
           <div className="mb-3">
+            {/*Check boxed that is checked if payment method is Stripe */}
             <Form.Check
               type="radio"
               id="Stripe"
@@ -56,6 +70,7 @@ export default function PaymentPage() {
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>
+          {/*Button used to input selected payment method */}
           <div className="mb-3">
             <Button type="submit">Continue</Button>
           </div>

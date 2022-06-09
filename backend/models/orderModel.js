@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const orderModelSchema = new mongoose.Schema(
   {
+    //Array that saves item information
     orderItems: [
       {
         slug: { type: String, required: true },
@@ -16,6 +17,7 @@ const orderModelSchema = new mongoose.Schema(
         },
       },
     ],
+    //Contains Customer Information
     customerInformation: {
       fName: { type: String, required: true },
       address: { type: String, required: true },
@@ -24,6 +26,7 @@ const orderModelSchema = new mongoose.Schema(
       country: { type: String, required: true },
     },
 
+    //Payment type selected
     paymentMethod: { type: String, required: true },
     paymentResult: {
       id: String,
@@ -43,10 +46,10 @@ const orderModelSchema = new mongoose.Schema(
     deliveredAt: { type: Date },
   },
   {
-    timsestamps: true,
+    timestamps: true,
   }
 );
-
+//Turns orderModelSchema into Order Model
 const Order = mongoose.model('Order', orderModelSchema);
 
 export default Order;

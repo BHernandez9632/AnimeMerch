@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { Storage } from '../Storage';
 
+//Accepts props to export merch function in code
 function Merch(props) {
   const { merch } = props;
 
@@ -16,8 +17,10 @@ function Merch(props) {
 
   const addToCartHandler = async (item) => {
     const merchLocated = cartItems.find((x) => x._id === merch._id);
+    //gets total of merch
     const total = merchLocated ? merchLocated.total + 1 : 1;
     const { data } = await axios.get(`/api/merchs/${item._id}`);
+    //Checks to see if item is in stock
     if (data.stockCount < total) {
       window.alert('Out of Stock');
       return;
@@ -28,6 +31,7 @@ function Merch(props) {
     });
   };
   return (
+    //Card used to create a box for each item
     <Card>
       <Link to={`/merch/${merch.slug}`}>
         <img src={merch.image} className="card-img-top" alt={merch.name} />
@@ -39,10 +43,12 @@ function Merch(props) {
         <Rating rating={merch.srating} review={merch.reviews} />
         <Card.Text>${merch.price}</Card.Text>
         {merch.stockCount === 0 ? (
+          //Creates button on item to add to cart
           <Button variant="dark" disabled>
             Sold Out
           </Button>
         ) : (
+          //Passes product into cart when clicked
           <Button onClick={() => addToCartHandler(merch)}>Add Cart</Button>
         )}
       </Card.Body>

@@ -11,8 +11,11 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* Stoage Provider used for global actions*/}
     <StorageProvider>
+      {/* Helmet Provider used to show wanted name on page tab*/}
       <HelmetProvider>
+        {/*This providers the paypal script it defers it to true because it is not needed at the beginning of application */}
         <PayPalScriptProvider deferLoading={true}>
           <App />
         </PayPalScriptProvider>

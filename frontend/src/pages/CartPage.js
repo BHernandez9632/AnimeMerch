@@ -23,6 +23,7 @@ export default function CartPage() {
       window.alert('Out of Stock');
       return;
     }
+    //updates item in cart
     ctxDispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, total },
@@ -31,17 +32,20 @@ export default function CartPage() {
   const removeItemHandler = (item) => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
+  //used to authenticate user, if authenticated user is redirected to shipping page
   const checkoutHandler = () => {
     navigate('/signin?redirect=/shipping');
   };
 
   return (
     <div>
+      {/*Helmet used to set title of page */}
       <Helmet>
         <title>Cart</title>
       </Helmet>
       <h1>Cart</h1>
       <Row>
+        {/*Used to show list of items */}
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
@@ -49,10 +53,13 @@ export default function CartPage() {
             </MessageBox>
           ) : (
             <ListGroup>
+              {/*Used to show list of items */}
               {cartItems.map((item) => (
+                //Used to distinguis
                 <ListGroup.Item key={item._id}>
                   <Row className="aligh-items-center">
                     <Col md={4}>
+                      {/*Shows image and its information for cart*/}
                       <img
                         src={item.image}
                         alt={item.name}
@@ -62,6 +69,7 @@ export default function CartPage() {
                       <Link to={`/merch/${item.slug}`}>{item.name}</Link>
                     </Col>
                     <Col md={3}>
+                      {/*This button decreases the number of items in cart */}
                       <Button
                         onClick={() => updateCartHandler(item, item.total - 1)}
                         variant="light"
@@ -70,6 +78,7 @@ export default function CartPage() {
                         <i className="fas fa-minus-circle"></i>
                       </Button>{' '}
                       <span>{item.total}</span>{' '}
+                      {/*This button Increases the number of items in cart */}
                       <Button
                         onClick={() => updateCartHandler(item, item.total + 1)}
                         variant="light"
@@ -78,6 +87,7 @@ export default function CartPage() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
+                    {/*Ussed for displaying item price */}
                     <Col md={3}>${item.price}</Col>
                     <Col md={2}>
                       <Button
@@ -99,13 +109,14 @@ export default function CartPage() {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>
-                    Subtotal (
-                    {cartItems.reduce((a, b) => a + b.price * b.total, 0)} )
-                    items) : $
+                    {/*Sums up quantity of items in cart */}
+                    Subtotal ({cartItems.reduce((a, b) => a + b.price, 0)} )
+                    items) : ${/* Multiplies price of cart by total*/}
                     {cartItems.reduce((a, b) => a + b.price * b.total, 0)}
                   </h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
+                  {/*This button is used to checkout from cart screen */}
                   <div className="d-grid">
                     <Button
                       type="button"

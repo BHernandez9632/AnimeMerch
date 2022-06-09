@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 const data = {
+  //users creation
   users: [
     {
       name: 'Bryan',
@@ -11,13 +12,14 @@ const data = {
 
     {
       name: 'Leroy',
-      email: 'test@tester.com',
+      email: 'test5@tester.com',
       password: bcrypt.hashSync('135246'),
       isAdmin: false,
     },
   ],
-
+  //product creation
   merchs: [
+    //_id: is there for show they are assigned automatically by MongoDB
     {
       // _id: '1',
       name: 'OnePiece Hoodie',

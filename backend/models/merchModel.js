@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+//This schema is used to define the fields in merch
 const merchSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
@@ -14,10 +15,11 @@ const merchSchema = new mongoose.Schema(
     description: { type: String, required: true },
   },
   {
-    timsestamps: true,
+    timestamps: true,
   }
 );
 
+//This builds a model based on the schema
 const Merch = mongoose.model('Merch', merchSchema);
 
 export default Merch;
