@@ -41,7 +41,9 @@ app.use('/api/orders', orderRouter);
 
 //Connection needed for cloud
 const __dirname = path.resolve();
+//serves all files from frontend build folder as a static file
 app.use(express.static(path.join(__dirname, '/frontend/build')));
+//Everything a user enters in domain is served by index.html
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
