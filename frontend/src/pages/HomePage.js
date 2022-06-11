@@ -65,7 +65,7 @@ function HomePage() {
               //Col is used to set how many items are on the screen depending on size
               //Key attribute makes it a unique value
               <Col key={merch.slug} sm={6} md={5} lg={4} className="mb-3">
-                {/*Line 66 used to create a component for later use*/}
+                {/*Line 67 used to create a component for later use*/}
                 <Merch merch={merch}></Merch>
               </Col>
             ))}
