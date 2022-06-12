@@ -29,11 +29,11 @@ const initialState = {
 };
 
 //switch used to execute a statement from multiple others
-function reducer(state, interact) {
-  switch (interact.type) {
+function reducer(state, action) {
+  switch (action.type) {
     case 'CART_ADD_ITEM':
       //addMerch adds selected item to cart
-      const addMerch = interact.payload;
+      const addMerch = action.payload;
       //merchLocated searches for item adding one if item is there
       const merchLocated = state.cart.cartItems.find(
         (item) => item._id === addMerch._id
@@ -55,7 +55,7 @@ function reducer(state, interact) {
     case 'CART_REMOVE_ITEM': {
       //filter used to check if item is not equal to current _id
       const cartItems = state.cart.cartItems.filter(
-        (item) => item._id !== interact.payload._id
+        (item) => item._id !== action.payload._id
       );
       // Storage used so items don't dissapear when page is refreshed
       //stringify convers the items to string and saves them
@@ -69,7 +69,7 @@ function reducer(state, interact) {
 
     //Keeps the previous state then updates the user info based on backend data
     case 'USER_SIGNIN':
-      return { ...state, userInfo: interact.payload };
+      return { ...state, userInfo: action.payload };
     //defining  user log out
     case 'USER_LOGOUT':
       //Maintains previous state setting user info to null
@@ -91,7 +91,7 @@ function reducer(state, interact) {
           //changes state in the cart
           ...state.cart,
           //Focus changes on customerInformation card updating it with the data from payload
-          customerInformation: interact.payload,
+          customerInformation: action.payload,
         },
       };
 
@@ -101,7 +101,7 @@ function reducer(state, interact) {
         cart: {
           //Saves payment method
           ...state.cart,
-          paymentMethod: interact.payload,
+          paymentMethod: action.payload,
         },
       };
 

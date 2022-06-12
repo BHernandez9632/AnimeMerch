@@ -7,9 +7,9 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { getError } from '../UtilityE';
 
-const reducer = (state, interact) => {
+const reducer = (state, action) => {
   //switch case
-  switch (interact.type) {
+  switch (action.type) {
     //if request accept it load true
     case 'UPDATE_REQUEST':
       return { ...state, loadingUpdate: true };

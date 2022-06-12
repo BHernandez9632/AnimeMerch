@@ -8,15 +8,15 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../sections/LoadingBox';
 import MessageBox from '../sections/MessageBox';
 
-const reducer = (state, interact) => {
+const reducer = (state, action) => {
   //switch used to execute a statement from multiple others
-  switch (interact.type) {
+  switch (action.type) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
-      return { ...state, merchs: interact.payload, loading: false };
+      return { ...state, merchs: action.payload, loading: false };
     case 'FETCH_FAIL':
-      return { ...state, loading: false, error: interact.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

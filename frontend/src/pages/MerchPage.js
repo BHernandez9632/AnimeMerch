@@ -14,15 +14,15 @@ import MessageBox from '../sections/MessageBox';
 import { getError } from '../UtilityE';
 import { Storage } from '../Storage';
 
-const reducer = (state, interact) => {
+const reducer = (state, action) => {
   //switch used to execute a statement from multiple others
-  switch (interact.type) {
+  switch (action.type) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
-      return { ...state, merch: interact.payload, loading: false };
+      return { ...state, merch: action.payload, loading: false };
     case 'FETCH_FAIL':
-      return { ...state, loading: false, error: interact.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

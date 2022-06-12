@@ -13,19 +13,19 @@ import Card from 'react-bootstrap/Card';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
 
-//This functions accepts interact and state
-function reducer(state, interact) {
+//This functions accepts action and state
+function reducer(state, action) {
   //switch case
-  switch (interact.type) {
+  switch (action.type) {
     //gets requests
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
     //on successful get
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, order: interact.payload, error: '' };
+      return { ...state, loading: false, order: action.payload, error: '' };
     //if it fails to get request
     case 'FETCH_FAIL':
-      return { ...state, loading: false, error: interact.payload };
+      return { ...state, loading: false, error: action.payload };
     //Request payments
     case 'PAYMENT_REQUEST':
       return { ...state, loadingPay: true };
@@ -68,9 +68,9 @@ export default function OrderInfoPage() {
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
   //createOrder function
-  function createOrder(data, interact) {
+  function createOrder(data, action) {
     return (
-      interact.order
+      action.order
         //calls create action
         .create({
           purchase_units: [
@@ -88,8 +88,8 @@ export default function OrderInfoPage() {
   }
 
   //approve function it triggers on successful payment
-  function onApprove(data, interact) {
-    return interact.order.capture().then(async function (details) {
+  function onApprove(data, action) {
+    return action.order.capture().then(async function (details) {
       //Updates order in the backend
       try {
         //Dispatches pay request

@@ -14,9 +14,9 @@ import { toast } from 'react-toastify';
 import LoadingBox from '../sections/LoadingBox';
 
 //degining switch case
-const reducer = (state, interact) => {
+const reducer = (state, action) => {
   //switch case
-  switch (interact.type) {
+  switch (action.type) {
     //creates a request
     case 'CREATE_REQUEST':
       return { ...state, loading: true };
