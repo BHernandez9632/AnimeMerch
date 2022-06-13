@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "v16.15.1"
+    "node": "v16.13.1"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^7.8.1",
